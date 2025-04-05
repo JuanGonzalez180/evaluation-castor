@@ -1,0 +1,88 @@
+# Changelog for version 2.0 - Initial implementation
+
+databaseChangeLog:
+  #########################################
+  # Service Request Module
+  #########################################
+  
+  # Request status table
+  - changeSet:
+      id: 5
+      author: developer
+      comment: Creation of request status table
+      changes:
+        - sqlFile:
+            path: ../scripts/schema/tables/request_status.sql
+            relativeToChangelogFile: true
+  
+  # Services table
+  - changeSet:
+      id: 6
+      author: developer
+      comment: Creation of services table
+      changes:
+        - sqlFile:
+            path: ../scripts/schema/tables/services.sql
+            relativeToChangelogFile: true
+  
+  # Requesters table
+  - changeSet:
+      id: 7
+      author: developer
+      comment: Creation of requesters table
+      changes:
+        - sqlFile:
+            path: ../scripts/schema/tables/requesters.sql
+            relativeToChangelogFile: true
+  
+  # Requests table
+  - changeSet:
+      id: 8
+      author: developer
+      comment: Creation of requests table
+      changes:
+        - sqlFile:
+            path: ../scripts/schema/tables/requests.sql
+            relativeToChangelogFile: true
+  
+  # Initial data for request status
+  - changeSet:
+      id: 9
+      author: developer
+      comment: Insertion of initial request status data
+      changes:
+        - sqlFile:
+            path: ../scripts/data/initial_request_status.sql
+            relativeToChangelogFile: true
+  
+  # View for complete request query
+  - changeSet:
+      id: 10
+      author: developer
+      comment: Creation of view for complete request information
+      changes:
+        - sqlFile:
+            path: ../scripts/schema/views/v_complete_requests.sql
+            relativeToChangelogFile: true
+  
+  # Indexes for query optimization
+  - changeSet:
+      id: 11
+      author: developer
+      comment: Creation of additional indexes for requests
+      changes:
+        - createIndex:
+            indexName: idx_requests_date
+            tableName: requests
+            columns:
+              - column:
+                  name: request_date
+  
+  # Tag to mark the end of version 1.0
+  - changeSet:
+      id: 12
+      author: developer
+      comment: Tag for version 1.0
+      changes:
+        - tagDatabase:
+            tag: v1.0

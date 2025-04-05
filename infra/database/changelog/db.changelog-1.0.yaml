@@ -1,0 +1,49 @@
+# Changelog for version 1.0 - Initial implementation
+
+databaseChangeLog:
+  #########################################
+  # Employee Management Module
+  #########################################
+  
+  # Creation of positions table
+  - changeSet:
+      id: 1
+      author: developer
+      comment: Creation of positions table
+      changes:
+        - sqlFile:
+            path: ../scripts/schema/tables/positions.sql
+            relativeToChangelogFile: true
+  
+  # Creation of employees table
+  - changeSet:
+      id: 2
+      author: developer
+      comment: Creation of employees table
+      changes:
+        - sqlFile:
+            path: ../scripts/schema/tables/employees.sql
+            relativeToChangelogFile: true
+  
+  # Initial positions data
+  - changeSet:
+      id: 3
+      author: developer
+      comment: Insertion of initial positions data
+      changes:
+        - sqlFile:
+            path: ../scripts/data/initial_positions.sql
+            relativeToChangelogFile: true
+  
+  # Indexes for optimization
+  - changeSet:
+      id: 4
+      author: developer
+      comment: Creation of indexes for employees table
+      changes:
+        - createIndex:
+            indexName: idx_employees_id_number
+            tableName: employees
+            columns:
+              - column:
+                  name: id_number
