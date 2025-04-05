@@ -33,6 +33,21 @@ module "rds_database" {
     subnet_ids  = module.vpc.private_subnets
 }
 
+# Module to initialize the database with Liquibase
+module "database_init" {
+    source = "./modules/database_init"
+    
+    db_host     = module.rds_database.db_host
+    db_port     = module.rds_database.db_port
+    db_name     = module.rds_database.db_name
+    db_username = module.rds_database.db_username
+    db_password = var.db_password
+    environment = var.environment
+    
+    # This module depends on the database being created
+    depends_on = [module.rds_database]
+}
+
 # API Gateway to expose Lambda functions
 module "api_gateway" {
     source = "./modules/api_gateway"

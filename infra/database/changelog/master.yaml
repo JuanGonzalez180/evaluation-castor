@@ -1,16 +1,16 @@
 # Master changelog file - includes version-based changelogs
 
 databaseChangeLog:
-  - preConditions:
-      - runningAs:
-          username: ${liquibase.user}
+    - preConditions:
+        - runningAs:
+            username: ${liquibase.user}
 
-  # Version 1.0 - Initial implementation
-  - include:
-      file: db.changelog-1.0.yaml
-      relativeToChangelogFile: true
+    # Version 1.0 - Develop functionality to manage employee information
+    - include:
+        file: db.changelog-1.0.yaml
+        relativeToChangelogFile: true
       
-  # Version 2.0 - For future implementations
-  # - include:
-  #     file: db.changelog-2.0.yaml
-  #     relativeToChangelogFile: true
+    # Version 2.0 - The company NN S.A. needs a software solution to handle service requests.
+    - include:
+        file: db.changelog-2.0.yaml
+        relativeToChangelogFile: true
