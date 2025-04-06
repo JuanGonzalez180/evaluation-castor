@@ -1,0 +1,80 @@
+<div class="card">
+    <h1>{{ isEditMode ? 'Editar Empleado' : 'Nuevo Empleado' }}</h1>
+  
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" class="p-fluid">
+      <div class="grid">
+        <div class="col-12 md:col-6">
+          <div class="field">
+            <label for="identificationNumber">Cédula *</label>
+            <input pInputText id="identificationNumber" type="number" formControlName="identificationNumber" />
+            <small *ngIf="submitted && f['identificationNumber'].errors?.['required']" class="p-error">
+              La cédula es requerido
+            </small>
+          </div>
+        </div>
+  
+        <div class="col-12 md:col-6">
+          <div class="field">
+            <label for="name">Nombre Completo *</label>
+            <input pInputText id="name" type="text" formControlName="name" />
+            <small *ngIf="submitted && f['name'].errors?.['required']" class="p-error">
+              El nombre es requerido
+            </small>
+          </div>
+        </div>
+  
+        <div class="col-12 md:col-6">
+          <div class="field">
+            <label for="hireDate">Fecha de Ingreso *</label>
+            <p-datePicker id="hireDate" formControlName="hireDate" dateFormat="dd/mm/yy" [showIcon]="true"></p-datePicker>
+            <small *ngIf="submitted && f['hireDate'].errors?.['required']" class="p-error">
+              La fecha de ingreso es requerida
+            </small>
+          </div>
+        </div>
+  
+        <div class="col-12 md:col-6">
+          <div class="field">
+            <label for="positionId">Cargo *</label>
+            <p-select id="positionId" 
+              [options]="positions" 
+              formControlName="positionId" 
+              optionLabel="name" 
+              optionValue="positionId"
+              placeholder="Seleccione un cargo"
+              [filter]="true" 
+              filterBy="name"></p-select>
+            <small *ngIf="submitted && f['positionId'].errors?.['required']" class="p-error">
+              El cargo es requerido
+            </small>
+          </div>
+        </div>
+  
+        <div class="col-12">
+          <div class="field">
+            <label for="photo">Foto</label>
+            <div class="flex align-items-center">
+              <img *ngIf="photoPreview" [src]="photoPreview" alt="Vista previa" width="100" class="mr-3 border-round" />
+              <p-fileUpload #fileUpload
+                            mode="basic" 
+                            chooseLabel="Seleccionar Imagen" 
+                            accept="image/*" 
+                            [maxFileSize]="1000000"
+                            (onSelect)="onPhotoSelect($event)"
+                            [auto]="false"
+                            [customUpload]="true"
+                            (uploadHandler)="onPhotoUpload($event)"></p-fileUpload>
+            </div>
+            <small *ngIf="photoError" class="p-error">{{ photoError }}</small>
+          </div>
+        </div>
+  
+        <div class="col-12 flex justify-content-end gap-2 mt-4">
+          <button pButton pRipple type="button" label="Cancelar" class="p-button-outlined" (click)="onCancel()"></button>
+          <button pButton pRipple type="submit" label="Guardar" icon="pi pi-save"></button>
+        </div>
+      </div>
+    </form>
+</div>
+  
+<p-toast></p-toast>

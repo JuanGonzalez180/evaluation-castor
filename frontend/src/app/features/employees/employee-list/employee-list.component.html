@@ -1,0 +1,99 @@
+<div class="card">
+    <div class="flex justify-content-between align-items-center mb-3">
+      <h1>Gestión de Empleados</h1>
+      <button pButton type="button" label="Nuevo Empleado" icon="pi pi-plus" routerLink="/employees/new"></button>
+    </div>
+  
+    <p-toast></p-toast>
+    <p-confirmDialog header="Confirmación" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+  
+    <p-table 
+      [value]="employees" 
+      [paginator]="true" 
+      [rows]="10" 
+      [rowsPerPageOptions]="[5, 10, 25, 50]"
+      [loading]="loading"
+      styleClass="p-datatable-gridlines"
+      [tableStyle]="{'min-width': '50rem'}"
+      dataKey="id">
+      
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="id" id="employee-id">ID <p-sortIcon field="id"></p-sortIcon></th>
+          <th pSortableColumn="identificationNumber" id="employee-identification-number">Cédula <p-sortIcon field="identificationNumber"></p-sortIcon></th>
+          <th pSortableColumn="name" id="employee-name">Nombre <p-sortIcon field="name"></p-sortIcon></th>
+          <th id="employee-photo">Foto</th>
+          <th id="employee-position-name" pSortableColumn="position.name">Cargo <p-sortIcon field="position.name"></p-sortIcon></th>
+          <th id="employee-hire-date" pSortableColumn="hireDate">Fecha Ingreso <p-sortIcon field="hireDate"></p-sortIcon></th>
+          <th id="employee-actions">Acciones</th>
+        </tr>
+      </ng-template>
+      
+      <ng-template pTemplate="body" let-employee>
+        <tr>
+          <td>{{employee.id}}</td>
+          <td>{{employee.identificationNumber}}</td>
+          <td>{{employee.name}}</td>
+          <td>
+            <div class="flex align-items-center justify-content-center">
+              <img [src]="employee.photoUrl || 'assets/images/avatar-placeholder.png'" 
+                   [alt]="employee.name" 
+                   width="40" 
+                   height="40" 
+                   class="border-circle shadow-2" />
+            </div>
+          </td>
+          <td>{{employee.position?.name}}</td>
+          <td>{{employee.hireDate | date:'dd/MM/yyyy'}}</td>
+          <td>
+            <div class="flex gap-2 justify-content-center">
+              <button pButton pRipple 
+                      type="button" 
+                      icon="pi pi-eye" 
+                      class="p-button-rounded p-button-info p-button-sm" 
+                      pTooltip="Ver detalles"
+                      tooltipPosition="top"
+                      [routerLink]="['/employees', employee.id]"></button>
+                      
+              <button pButton pRipple 
+                      type="button" 
+                      icon="pi pi-pencil" 
+                      class="p-button-rounded p-button-success p-button-sm" 
+                      pTooltip="Editar"
+                      tooltipPosition="top"
+                      [routerLink]="['/employees/edit', employee.id]"></button>
+                      
+              <button pButton pRipple 
+                      type="button" 
+                      icon="pi pi-trash" 
+                      class="p-button-rounded p-button-danger p-button-sm" 
+                      pTooltip="Eliminar"
+                      tooltipPosition="top"
+                      (click)="confirmDelete(employee)"></button>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+      
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="7" class="text-center p-4">
+            <div class="flex flex-column align-items-center">
+              <i class="pi pi-search" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5"></i>
+              <span>No se encontraron empleados</span>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+      
+      <ng-template pTemplate="paginatorleft">
+        <button pButton type="button" icon="pi pi-refresh" 
+                class="p-button-text" 
+                (click)="loadEmployees()"></button>
+      </ng-template>
+      
+      <ng-template pTemplate="paginatorright">
+        <div class="text-right">Total: {{employees.length}} empleados</div>
+      </ng-template>
+    </p-table>
+</div>

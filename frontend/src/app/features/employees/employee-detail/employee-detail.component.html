@@ -1,0 +1,100 @@
+<div class="card">
+    <div class="flex justify-content-between align-items-center mb-4">
+      <h1>Detalle del Empleado</h1>
+      <div class="flex gap-2">
+        <button pButton pRipple type="button" icon="pi pi-pencil" label="Editar" 
+                class="p-button-outlined" 
+                [routerLink]="['/employees/edit', employee?.id]"></button>
+        <button pButton pRipple type="button" icon="pi pi-arrow-left" label="Volver" 
+                class="p-button" 
+                routerLink="/employees"></button>
+      </div>
+    </div>
+  
+    <p-toast></p-toast>
+  
+    <div *ngIf="loading" class="flex justify-content-center">
+      <p-progressSpinner></p-progressSpinner>
+    </div>
+  
+    <div *ngIf="!loading && employee" class="grid">
+      <div class="col-12 md:col-4">
+        <p-card>
+          <ng-template pTemplate="header">
+            <div class="flex justify-content-center py-4">
+              <img [src]="employee.photoUrl || 'assets/images/avatar-placeholder.png'" 
+                   [alt]="employee.name" 
+                   class="shadow-4 border-round" 
+                   style="width: 200px; height: 200px; object-fit: cover;">
+            </div>
+          </ng-template>
+          <div class="text-center">
+            <h2 class="mt-0 mb-2">{{employee.name}}</h2>
+            <p class="mt-0 text-600">{{employee.position?.name}}</p>
+          </div>
+        </p-card>
+      </div>
+  
+      <div class="col-12 md:col-8">
+        <p-panel header="Información del Empleado">
+          <div class="grid">
+            <div class="col-12 md:col-6">
+              <div class="mb-3">
+                <label class="block text-600 font-medium mb-2">ID</label>
+                <div>{{employee.id}}</div>
+              </div>
+            </div>
+  
+            <div class="col-12 md:col-6">
+              <div class="mb-3">
+                <label class="block text-600 font-medium mb-2">Número de Identificación</label>
+                <div>{{employee.identificationNumber}}</div>
+              </div>
+            </div>
+  
+            <div class="col-12 md:col-6">
+              <div class="mb-3">
+                <label class="block text-600 font-medium mb-2">Fecha de Ingreso</label>
+                <div>{{employee.hireDate | date:'dd/MM/yyyy'}}</div>
+              </div>
+            </div>
+  
+            <div class="col-12 md:col-6">
+              <div class="mb-3">
+                <label class="block text-600 font-medium mb-2">Cargo</label>
+                <div>{{employee.position?.name}}</div>
+              </div>
+            </div>
+  
+            <div class="col-12">
+              <div class="mb-3">
+                <label class="block text-600 font-medium mb-2">Fecha de Creación</label>
+                <div>{{employee.createdAt | date:'dd/MM/yyyy HH:mm'}}</div>
+              </div>
+            </div>
+          </div>
+        </p-panel>
+  
+        <div class="mt-4">
+          <p-panel header="Acciones">
+            <div class="flex gap-2">
+              <button pButton pRipple type="button" icon="pi pi-trash" label="Eliminar" 
+                      class="p-button-danger" 
+                      (click)="confirmDelete()"></button>
+            </div>
+          </p-panel>
+        </div>
+      </div>
+    </div>
+  
+    <div *ngIf="!loading && !employee" class="flex flex-column align-items-center py-5">
+      <i class="pi pi-exclamation-circle" style="font-size: 5rem; color: var(--orange-500);"></i>
+      <h2>Empleado no encontrado</h2>
+      <p>El empleado que buscas no existe o ha sido eliminado.</p>
+      <button pButton pRipple type="button" label="Volver a la lista" 
+              class="mt-3" 
+              routerLink="/employees"></button>
+    </div>
+</div>
+  
+<p-confirmDialog header="Confirmación" icon="pi pi-exclamation-triangle"></p-confirmDialog>
