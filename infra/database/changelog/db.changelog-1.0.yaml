@@ -8,7 +8,7 @@ databaseChangeLog:
   # Creation of positions table
   - changeSet:
       id: 1
-      author: developer
+      author: JuanGonzalez
       comment: Creation of positions table
       changes:
         - sqlFile:
@@ -18,7 +18,7 @@ databaseChangeLog:
   # Creation of employees table
   - changeSet:
       id: 2
-      author: developer
+      author: JuanGonzalez
       comment: Creation of employees table
       changes:
         - sqlFile:
@@ -28,7 +28,7 @@ databaseChangeLog:
   # Initial positions data
   - changeSet:
       id: 3
-      author: developer
+      author: JuanGonzalez
       comment: Insertion of initial positions data
       changes:
         - sqlFile:
@@ -38,7 +38,7 @@ databaseChangeLog:
   # Indexes for optimization
   - changeSet:
       id: 4
-      author: developer
+      author: JuanGonzalez
       comment: Creation of indexes for employees table
       changes:
         - createIndex:
