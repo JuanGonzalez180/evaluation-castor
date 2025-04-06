@@ -34,16 +34,4 @@ databaseChangeLog:
         - sqlFile:
             path: ../scripts/data/initial_positions.sql
             relativeToChangelogFile: true
-  
-  # Indexes for optimization
-  - changeSet:
-      id: 4
-      author: JuanGonzalez
-      comment: Creation of indexes for employees table
-      changes:
-        - createIndex:
-            indexName: idx_employees_id_number
-            tableName: employees
-            columns:
-              - column:
-                  name: id_number
+

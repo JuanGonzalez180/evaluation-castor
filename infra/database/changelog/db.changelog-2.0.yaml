@@ -47,7 +47,7 @@ databaseChangeLog:
 
   # Detail request service table
   - changeSet:
-      id: 8
+      id: 9
       author: JuanGonzalez
       comment: Creation of detail request service table
       changes:

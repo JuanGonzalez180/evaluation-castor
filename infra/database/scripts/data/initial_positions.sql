@@ -6,4 +6,4 @@ VALUES
     ('Developer'),
     ('QA'),
     ('PO')
-ON CONFLICT (name) DO UPDATE;
+ON CONFLICT (name) DO NOTHING;
