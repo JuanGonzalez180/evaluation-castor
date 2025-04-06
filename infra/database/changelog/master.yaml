@@ -3,7 +3,7 @@
 databaseChangeLog:
     - preConditions:
         - runningAs:
-            username: postgres
+            username: castoruser
 
     # Version 1.0 - Develop functionality to manage employee information
     - include:
