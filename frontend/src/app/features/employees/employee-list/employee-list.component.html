@@ -23,9 +23,9 @@
           <th pSortableColumn="identificationNumber" id="employee-identification-number">Cédula <p-sortIcon field="identificationNumber"></p-sortIcon></th>
           <th pSortableColumn="name" id="employee-name">Nombre <p-sortIcon field="name"></p-sortIcon></th>
           <th id="employee-photo">Foto</th>
-          <th id="employee-position-name" pSortableColumn="position.name">Cargo <p-sortIcon field="position.name"></p-sortIcon></th>
+          <th id="employee-position-name" pSortableColumn="positionName">Cargo <p-sortIcon field="positionName"></p-sortIcon></th>
           <th id="employee-hire-date" pSortableColumn="hireDate">Fecha Ingreso <p-sortIcon field="hireDate"></p-sortIcon></th>
-          <th id="employee-actions">Acciones</th>
+            <th id="employee-actions" class="text-center">Acciones</th>
         </tr>
       </ng-template>
       
@@ -43,7 +43,7 @@
                    class="border-circle shadow-2" />
             </div>
           </td>
-          <td>{{employee.position?.name}}</td>
+          <td>{{employee.positionName}}</td>
           <td>{{employee.hireDate | date:'dd/MM/yyyy'}}</td>
           <td>
             <div class="flex gap-2 justify-content-center">
@@ -69,7 +69,7 @@
                       class="p-button-rounded p-button-danger p-button-sm" 
                       pTooltip="Eliminar"
                       tooltipPosition="top"
-                      (click)="confirmDelete(employee)"></button>
+                      (click)="confirmDelete(employee.id)"></button>
             </div>
           </td>
         </tr>

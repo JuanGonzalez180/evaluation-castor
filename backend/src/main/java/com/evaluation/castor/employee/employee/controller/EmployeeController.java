@@ -6,7 +6,6 @@ import com.evaluation.castor.employee.employee.model.entity.Employee;
 import com.evaluation.castor.employee.employee.model.mapper.EmployeeMapper;
 import com.evaluation.castor.employee.employee.services.EmployeeService;
 import jakarta.validation.ConstraintViolationException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,11 +23,13 @@ import org.slf4j.LoggerFactory;
 @RequestMapping("/api/employee")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class EmployeeController {
-    @Autowired
-    private EmployeeService employeeService;
+    private final EmployeeService employeeService;
+    private final EmployeeMapper employeeMapper;
 
-    @Autowired
-    private EmployeeMapper employeeMapper;
+    public EmployeeController(EmployeeService employeeService, EmployeeMapper employeeMapper) {
+        this.employeeService = employeeService;
+        this.employeeMapper = employeeMapper;
+    }
 
     private static final Logger log = LoggerFactory.getLogger(EmployeeController.class);
 
@@ -40,7 +41,7 @@ public class EmployeeController {
     }
 
     @PostMapping("")
-    public ResponseEntity<?> create(@RequestBody EmployeeDTO employeeDTO) {
+    public ResponseEntity<Object> create(@RequestBody EmployeeDTO employeeDTO) {
         Map<String, Object> response = new HashMap<>();
 
         try {
@@ -71,7 +72,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> show(@PathVariable Long id) {
+    public ResponseEntity<Object> show(@PathVariable Long id) {
         Map<String, Object> response = new HashMap<>();
 
         try {
@@ -90,7 +91,7 @@ public class EmployeeController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@RequestBody EmployeeDTO employeeDTO, @PathVariable Long id) {
+    public ResponseEntity<Object> update(@RequestBody EmployeeDTO employeeDTO, @PathVariable Long id) {
         Map<String, Object> response = new HashMap<>();
 
         Employee currentEmployee = employeeService.findById(id);
@@ -131,7 +132,7 @@ public class EmployeeController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable Long id) {
+    public ResponseEntity<Object> delete(@PathVariable Long id) {
         Map<String, Object> response = new HashMap<>();
 
         Employee currentEmployee = employeeService.findById(id);

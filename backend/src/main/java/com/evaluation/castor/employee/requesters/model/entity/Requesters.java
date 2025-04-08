@@ -1,23 +1,24 @@
-package com.evaluation.castor.employee.position.model.entity;
-
-import java.util.Date;
+package com.evaluation.castor.employee.requesters.model.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 
-@Entity
-@Table(name = "positions")
-@Getter
-public class Position {
+import java.util.Date;
 
+@Entity
+@Table(name = "requesters")
+@Getter
+public class Requesters {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "position_id")
-    private Long positionId;
+    @Column(name = "requester_id")
+    private Long requesterId;
 
-    @NotNull(message = "El nombre del cargo")
     private String name;
+    private String email;
+    private String phone;
+    private String address;
 
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)

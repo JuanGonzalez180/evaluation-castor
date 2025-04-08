@@ -27,6 +27,7 @@ public class EmployeeMapper {
         employee.setIdentificationNumber(dto.getIdentificationNumber());
         employee.setName(dto.getName());
         employee.setHireDate(dto.getHireDate());
+        employee.setCreatedAt(dto.getCreatedAt());
 
         if (dto.getPositionId() != null) {
             Position position = positionService.findById(dto.getPositionId());
@@ -46,6 +47,7 @@ public class EmployeeMapper {
         dto.setIdentificationNumber(entity.getIdentificationNumber());
         dto.setName(entity.getName());
         dto.setHireDate(entity.getHireDate());
+        dto.setCreatedAt(entity.getCreatedAt());
 
         if (entity.getPosition() != null) {
             dto.setPositionId(entity.getPosition().getPositionId());

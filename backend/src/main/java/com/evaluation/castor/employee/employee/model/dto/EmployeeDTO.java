@@ -12,6 +12,7 @@ public class EmployeeDTO {
     private Long identificationNumber;
     private String name;
     private Date hireDate;
+    private Date createdAt;
     private Long positionId;
     private String positionName;
 }

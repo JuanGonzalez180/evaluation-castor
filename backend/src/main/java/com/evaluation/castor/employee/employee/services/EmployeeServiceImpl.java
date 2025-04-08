@@ -1,6 +1,5 @@
 package com.evaluation.castor.employee.employee.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,8 +10,11 @@ import com.evaluation.castor.employee.employee.model.entity.Employee;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
-    @Autowired
-    private EmployeeDao employeeDao;
+    private final EmployeeDao employeeDao;
+
+    public EmployeeServiceImpl(EmployeeDao employeeDao) {
+        this.employeeDao = employeeDao;
+    }
 
     @Override
     @Transactional(readOnly = true)
@@ -21,6 +23,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Employee findById(Long id) {
         return employeeDao.findById(id).orElse(null);
     }
