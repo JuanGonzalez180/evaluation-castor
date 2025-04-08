@@ -20,9 +20,9 @@ employee-service-monorepo/
 
 ## Modelo Entidad-Relación (MER)
 
-El diseño de la base de datos sigue el Modelo Entidad-Relación (MER) que se encuentra en el archivo `documentation/castordb-MER.png`. Este modelo proporciona una visión general de las entidades principales y sus relaciones.
+El diseño de la base de datos sigue el Modelo Entidad-Relación (MER) que se encuentra en el archivo `documentation/castordb-mer.png`. Este modelo proporciona una visión general de las entidades principales y sus relaciones.
 
-![Modelo Entidad-Relación](documentation/castordb-MER.png)
+![Modelo Entidad-Relación](documentation/castordb-mer.png)
 
 ## Colección de Postman
 
