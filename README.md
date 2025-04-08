@@ -74,11 +74,6 @@ Puedes importar esta colección en Postman siguiendo estos pasos:
 - Asociación de servicios a solicitudes
 - Información detallada de solicitantes
 
-### Dashboard
-- Métricas clave en tiempo real
-- Gráficos visuales de distribución de empleados y solicitudes
-- Listas de empleados recientes y solicitudes recientes
-
 ## Configuración de la Base de Datos
 
 La estructura de la base de datos se gestiona con Liquibase. Los scripts están organizados en:
