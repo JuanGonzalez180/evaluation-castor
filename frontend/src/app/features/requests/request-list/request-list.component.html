@@ -1,1 +1,82 @@
-<p>request-list works!</p>
+<div class="card">
+    <h2>Listado de Solicitudes.</h2>
+  
+    <p>Expanda para ver los servicios.</p>
+    
+    <p-table 
+      [value]="serviceRequests" 
+      dataKey="requestId"
+      [expandedRowKeys]="expandedRows"
+      [rowHover]="true" 
+      [paginator]="true" 
+      [rows]="10">
+      
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 3rem" scope="col"></th>
+          <th scope="col">Nro Solicitud</th>
+          <th scope="col">Nombre Solicitante</th>
+          <th scope="col">Nro Estado Solicitud</th>
+          <th scope="col">Nombre Estado</th>
+          <th scope="col">Fecha Solicitud</th>
+        </tr>
+      </ng-template>
+      
+      <ng-template pTemplate="body" let-request let-expanded="expanded">
+        <tr>
+          <td>
+            <button type="button" pButton pRipple [pRowToggler]="request"
+                    class="p-button-text p-button-rounded p-button-plain"
+                    [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+          </td>
+          <td>{{ request.requestId }}</td>
+          <td>{{ request.requester.name }}</td>
+          <td>{{ request.status.statusId }}</td>
+          <td>
+            <span [ngStyle]="getStatusStyle(request.status.color)">{{ request.status.name }}</span>
+          </td>
+          <td>{{ request.requestDate | date:'dd/MM/yyyy HH:mm' }}</td>
+        </tr>
+          
+        <tr [hidden]="!expandedRows[request.requestId]">
+            <td colspan="6">
+              <div class="p-3">
+                <h4>Servicios Solicitados</h4>
+                <p-table [value]="request.serviceRequestDetails">
+                  <ng-template pTemplate="header">
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Nombre del Servicio</th>
+                      <th scope="col">Descripción</th>
+                      <th scope="col">Observaciones</th>
+                      <th scope="col">Fecha Creación</th>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-detail>
+                    <tr>
+                      <td>{{ detail.service.serviceId }}</td>
+                      <td>{{ detail.service.name }}</td>
+                      <td>{{ detail.service.description }}</td>
+                      <td>{{ detail.observations }}</td>
+                      <td>{{ detail.creationAt | date:'dd/MM/yyyy HH:mm' }}</td>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="emptymessage">
+                    <tr>
+                      <td colspan="5">No hay servicios solicitados disponibles.</td>
+                    </tr>
+                  </ng-template>
+                </p-table>
+              </div>
+            </td>
+        </tr>
+      </ng-template>
+      
+      
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="6">No se encontraron solicitudes de servicio.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>

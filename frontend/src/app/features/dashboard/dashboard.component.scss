@@ -1,0 +1,14 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    color: white;
+}
+  
+.button-group {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+  

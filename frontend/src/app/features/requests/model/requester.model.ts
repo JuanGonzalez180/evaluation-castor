@@ -1,9 +1,8 @@
 export interface Requester {
-    requester_id: number;
+    requesterId: number;
     name: string;
     email: string;
-    phone?: string;
-    address?: string;
-    creation_date: string;
+    phone: string;
+    address: string;
+    creationAt: string;
 }
-  

@@ -1,0 +1,34 @@
+<div class="surface-0 shadow-1">
+    <div class="flex align-items-center justify-content-between px-4 py-2">
+      <div class="flex align-items-center">
+        <a [routerLink]="['/dashboard']">
+            <img src="logo.png" alt="Logo" height="40" class="mr-2" />
+        </a>
+      </div>
+  
+      <div class="flex">
+        <ul class="flex list-none p-0 m-0">
+          <li>
+            <a 
+              pRipple 
+              class="flex align-items-center cursor-pointer p-3 text-700 hover:text-primary hover:surface-100 border-bottom-2 border-transparent transition-colors transition-duration-150"
+              [routerLink]="['/employees']" 
+              routerLinkActive="border-primary text-primary font-medium">
+              <i class="pi pi-users mr-2"></i>
+              <span>Empleados</span>
+            </a>
+          </li>
+          <li>
+            <a 
+              pRipple 
+              class="flex align-items-center cursor-pointer p-3 text-700 hover:text-primary hover:surface-100 border-bottom-2 border-transparent transition-colors transition-duration-150"
+              [routerLink]="['/requests']" 
+              routerLinkActive="border-primary text-primary font-medium">
+              <i class="pi pi-ticket mr-2"></i>
+              <span>Solicitudes</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</div>

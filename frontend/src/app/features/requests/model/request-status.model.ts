@@ -1,7 +1,7 @@
 export interface RequestStatus {
-    status_id: number;
+    statusId: number;
     name: string;
-    description?: string;
-    color?: string;
-    creation_date: string;
+    description: string;
+    color: string;
+    creationAt: string;
 }

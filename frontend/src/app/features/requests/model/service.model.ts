@@ -1,6 +1,6 @@
 export interface Service {
-    service_id: number;
+    serviceId: number;
     name: string;
-    description?: string;
-    creation_date: string;
+    description: string;
+    creationAt: string;
 }

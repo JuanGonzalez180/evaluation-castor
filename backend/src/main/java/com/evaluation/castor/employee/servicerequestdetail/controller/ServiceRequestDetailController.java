@@ -2,7 +2,6 @@ package com.evaluation.castor.employee.servicerequestdetail.controller;
 
 import com.evaluation.castor.employee.servicerequestdetail.model.entity.ServiceRequestDetail;
 import com.evaluation.castor.employee.servicerequestdetail.services.ServiceRequestDetailService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,10 +33,7 @@ public class ServiceRequestDetailController {
                 return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
             }
 
-            //List<ServiceRequestDetailDTO> detailDTOs = mapper.toDtoList(details);
-
             return new ResponseEntity<>(details, HttpStatus.OK);
-            //return new ResponseEntity<>(detailDTOs, HttpStatus.OK);
         } catch (Exception e) {
             Map<String, Object> response = new HashMap<>();
             response.put("message", "Error al buscar detalles por ID de solicitud");

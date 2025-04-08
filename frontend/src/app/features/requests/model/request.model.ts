@@ -1,13 +1,12 @@
 import { Requester } from './requester.model';
 import { RequestStatus } from './request-status.model';
+import { ServiceRequestDetail } from './service-request-detail.model';
 
-export interface Request {
-    request_id: number;
-    request_date: string;
-    requester_id: number;
-    status_id: number;
-    creation_date: string;
-    
-    requester?: Requester;
-    status?: RequestStatus;
+export interface ServiceRequest {
+    requestId: number;
+    requestDate: string;
+    requester: Requester;
+    status: RequestStatus;
+    creationAt: string;
+    serviceRequestDetails: ServiceRequestDetail[];
 }
