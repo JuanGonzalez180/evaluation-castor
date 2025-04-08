@@ -1,0 +1,287 @@
+{
+	"info": {
+		"_postman_id": "fa3c9a14-1bc9-43d4-9ff0-45564f70eea8",
+		"name": "EvaluationCastor",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1258666",
+		"_collection_link": "https://orange-desert-1861.postman.co/workspace/Evaluation-Castor~75101cf2-b2f5-4e14-8ef1-b74c75524204/collection/1258666-fa3c9a14-1bc9-43d4-9ff0-45564f70eea8?action=share&source=collection_link&creator=1258666"
+	},
+	"item": [
+		{
+			"name": "Employees",
+			"item": [
+				{
+					"name": "GetById",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/employee/1",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"employee",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"identificationNumber\": 12345,\r\n    \"name\": \"Juan Gonzalez\",\r\n    \"positionId\": 1,\r\n    \"hireDate\": \"2025-04-07T08:30:00.000Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/employee",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"employee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"identificationNumber\": 1214,\r\n    \"name\": \"Juan Gonzalez\",\r\n    \"positionId\": 2,\r\n    \"hireDate\": \"2025-04-08T05:30:00.000Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiUrl}}/employee/1",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"employee",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/employee/2",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"employee",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetList",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/employee",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"employee"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Positions",
+			"item": [
+				{
+					"name": "GetList",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/position",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"position"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "RequestStatus",
+			"item": [
+				{
+					"name": "GetList",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/request-status",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"request-status"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Requesters",
+			"item": [
+				{
+					"name": "GetList",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/requesters",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"requesters"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Services",
+			"item": [
+				{
+					"name": "GetList",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/service",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"service"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Request",
+			"item": [
+				{
+					"name": "GetList",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/request",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"request"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ServiceRequestDetail",
+			"item": [
+				{
+					"name": "GetList",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiUrl}}/request",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"request"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
