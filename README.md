@@ -1,4 +1,4 @@
-# Employee Service - Sistema de Gestión de Empleados y Solicitudes
+# Castor Service - Sistema de Gestión de Empleados y Solicitudes
 
 Este proyecto es un monorepo que incluye una aplicación de gestión de empleados y solicitudes de servicio, desarrollada con Angular 19 en el frontend, Spring Boot (Java) en el backend y PostgreSQL como base de datos.
 
