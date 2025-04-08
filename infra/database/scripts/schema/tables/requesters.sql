@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS requesters (
     email VARCHAR(255) NOT NULL,
     phone VARCHAR(50),
     address TEXT,
-    creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Indexes for frequent searches
@@ -19,4 +19,4 @@ COMMENT ON COLUMN requesters.name IS 'Full name of the requester';
 COMMENT ON COLUMN requesters.email IS 'Contact email address';
 COMMENT ON COLUMN requesters.phone IS 'Contact phone number';
 COMMENT ON COLUMN requesters.address IS 'Physical address of the requester';
-COMMENT ON COLUMN requesters.creation_date IS 'Date and time the record was created';
+COMMENT ON COLUMN requesters.created_at IS 'Date and time the record was created';
